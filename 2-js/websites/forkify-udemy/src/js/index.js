@@ -15,7 +15,6 @@ import { elements, renderLoader, clearLoader } from "./views/base";
  *  - Liked recipes
  */
 const state = {};
-window.state = state;
 
 const controlSearch = async () => {
 	const query = searchView.getInput();
@@ -145,5 +144,3 @@ elements.recipe.addEventListener("click", e => {
 		controlLike();
 	}
 });
-
-window.l = new List();
