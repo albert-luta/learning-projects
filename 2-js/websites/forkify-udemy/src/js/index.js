@@ -106,9 +106,6 @@ elements.shopping.addEventListener("click", e => {
 	}
 });
 
-if (!state.likes) state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumLikes());
-
 const controlLike = () => {
 	if (!state.likes) state.likes = new Likes();
 	const currentId = state.recipe.id;
@@ -125,6 +122,13 @@ const controlLike = () => {
 	}
 	likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+window.addEventListener("load", () => {
+	state.likes = new Likes();
+	state.likes.readStorage();
+	likesView.toggleLikeMenu(state.likes.getNumLikes());
+	state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 elements.recipe.addEventListener("click", e => {
 	if (e.target.matches(".btn-decrease, .btn-decrease *")) {
